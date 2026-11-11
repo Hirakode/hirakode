@@ -18,48 +18,105 @@ export default function HeroScene() {
     let disposeScene: (() => void) | undefined;
 
     async function createScene() {
-      const [THREE, { RoomEnvironment }] = await Promise.all([import("three"), import("three/addons/environments/RoomEnvironment.js")]);
+      const [THREE, { toCreasedNormals }, { RoundedBoxGeometry }, { RectAreaLightUniformsLib }] = await Promise.all([
+        import("three"),
+        import("three/addons/utils/BufferGeometryUtils.js"),
+        import("three/addons/geometries/RoundedBoxGeometry.js"),
+        import("three/addons/lights/RectAreaLightUniformsLib.js"),
+      ]);
       if (disposed || !container) return;
       let renderer: InstanceType<typeof THREE.WebGLRenderer>;
       try { renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: "low-power" }); }
       catch { return; }
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setClearColor(0x111013, 0);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.05;
+      renderer.toneMappingExposure = 0.85;
       container.appendChild(renderer.domElement);
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 50);
       camera.position.set(0, 0, 8.8);
       const pmrem = new THREE.PMREMGenerator(renderer);
-      const environmentScene = new RoomEnvironment();
-      const environment = pmrem.fromScene(environmentScene, 0.04);
+      // Bake studio softboxes once: the moving metal reflects them without extra per-frame lights.
+      const environmentScene = new THREE.Scene();
+      environmentScene.background = new THREE.Color("#25262C");
+      const softboxGeometry = new THREE.PlaneGeometry(1, 1);
+      const softboxes = [
+        { position: [-3.5, -1, 5], scale: [2, 6], color: "#F4F6FF", intensity: 2 },
+        { position: [-6, -3, 2], scale: [3, 4], color: "#F4F6FF", intensity: 2 },
+        { position: [4, 1, 3], scale: [1.2, 6], color: "#FFF1D8", intensity: 5 },
+        { position: [0, 5, -2], scale: [5, 2], color: "#FFFFFF", intensity: 8 },
+        { position: [-1, -4, 2], scale: [6, 0.8], color: "#E0E8FF", intensity: 3 },
+        { position: [-5, 0, -3], scale: [2, 5], color: "#E8EDFF", intensity: 4 },
+      ].map(({ position, scale, color, intensity }) => {
+        const material = new THREE.MeshBasicMaterial({ color: new THREE.Color(color).multiplyScalar(intensity) });
+        const panel = new THREE.Mesh(softboxGeometry, material);
+        panel.position.set(position[0], position[1], position[2]);
+        panel.scale.set(scale[0], scale[1], 1);
+        panel.lookAt(0, 0, 0);
+        environmentScene.add(panel);
+        return panel;
+      });
+      const environment = pmrem.fromScene(environmentScene, 0.035);
       scene.environment = environment.texture;
-      environmentScene.dispose();
+      softboxes.forEach(panel => panel.material.dispose());
+      softboxGeometry.dispose();
+
+      // Directional microgrooves share one small, mipmapped texture across the brushed faces.
+      const grainSize = 256;
+      const grainData = new Uint8Array(grainSize * grainSize * 4);
+      for (let y = 0; y < grainSize; y++) {
+        for (let x = 0; x < grainSize; x++) {
+          const value = Math.round(205 + 30 * Math.sin(y * y * 127.1) + 6 * Math.sin(x * 0.1 + y * 1.1));
+          const offset = (y * grainSize + x) * 4;
+          grainData[offset] = grainData[offset + 1] = grainData[offset + 2] = value;
+          grainData[offset + 3] = 255;
+        }
+      }
+      const grain = new THREE.DataTexture(grainData, grainSize, grainSize);
+      grain.wrapS = grain.wrapT = THREE.RepeatWrapping;
+      grain.repeat.set(0.65, 2);
+      grain.magFilter = THREE.LinearFilter;
+      grain.minFilter = THREE.LinearMipmapLinearFilter;
+      grain.generateMipmaps = true;
+      grain.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+      grain.needsUpdate = true;
 
       const shape = new THREE.Shape();
       const coordinates = [[-0.2, 1.5], [-1.5, 0.75], [-1.5, -0.75], [-0.2, -1.5], [-0.2, -0.88], [-0.96, -0.43], [-0.96, 0.43], [-0.2, 0.88]];
       coordinates.forEach(([x, y], index) => index === 0 ? shape.moveTo(x, y) : shape.lineTo(x, y));
       shape.closePath();
-      const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.46, bevelEnabled: true, bevelSegments: 4, steps: 1, bevelSize: 0.09, bevelThickness: 0.09, curveSegments: 16 });
+      const geometry = new THREE.ExtrudeGeometry(shape, { depth: 0.46, bevelEnabled: true, bevelSegments: 8, steps: 1, bevelSize: 0.065, bevelThickness: 0.065, curveSegments: 16 });
+      toCreasedNormals(geometry, 0.4);
       geometry.translate(0, 0, -0.23);
-      const silver = new THREE.MeshPhysicalMaterial({ color: "#C0C4CA", metalness: 1, roughness: 0.19, clearcoat: 0.25, clearcoatRoughness: 0.25 });
-      const gold = new THREE.MeshPhysicalMaterial({ color: "#D2AE62", metalness: 1, roughness: 0.22, clearcoat: 0.25, clearcoatRoughness: 0.2 });
-      const burgundy = new THREE.MeshStandardMaterial({ color: "#7D1A33", metalness: 0.08, roughness: 0.65 });
-      const left = new THREE.Mesh(geometry, silver);
-      const right = new THREE.Mesh(geometry, gold);
+      const silver = new THREE.MeshPhysicalMaterial({ color: "#D6DBE3", metalness: 1, roughness: 0.36, roughnessMap: grain, bumpMap: grain, bumpScale: 0.00035, anisotropy: 0.35 });
+      const gold = new THREE.MeshPhysicalMaterial({ color: "#E7BE75", metalness: 1, roughness: 0.34, roughnessMap: grain, bumpMap: grain, bumpScale: 0.00035, anisotropy: 0.35 });
+      const silverEdge = new THREE.MeshStandardMaterial({ color: "#D6DBE3", metalness: 1, roughness: 0.14 });
+      const goldEdge = new THREE.MeshStandardMaterial({ color: "#E7BE75", metalness: 1, roughness: 0.14 });
+      const burgundy = new THREE.MeshPhysicalMaterial({ color: "#8F2342", metalness: 0.8, roughness: 0.27, clearcoat: 0.35, clearcoatRoughness: 0.2 });
+      const left = new THREE.Mesh(geometry, [silver, silverEdge]);
+      const right = new THREE.Mesh(geometry, [gold, goldEdge]);
       right.rotation.z = Math.PI;
       left.position.x = -0.11;
       right.position.x = 0.11;
-      const barGeometry = new THREE.BoxGeometry(0.7, 0.22, 0.35);
+      const barGeometry = new RoundedBoxGeometry(0.7, 0.22, 0.35, 3, 0.025);
       const bar = new THREE.Mesh(barGeometry, burgundy);
       const group = new THREE.Group();
       group.add(left, right, bar);
       scene.add(group);
-      const rim = new THREE.DirectionalLight("#F5F0EE", 3);
+      RectAreaLightUniformsLib.init();
+      const key = new THREE.RectAreaLight("#F4F6FF", 2, 1.4, 4);
+      key.position.set(-3, -1, 3);
+      key.lookAt(0, 0, 0);
+      scene.add(key);
+      const strip = new THREE.RectAreaLight("#FFE8C2", 5, 0.8, 4);
+      strip.position.set(3, 1, 2);
+      strip.lookAt(0, 0, 0);
+      scene.add(strip);
+      const rim = new THREE.DirectionalLight("#F5F0EE", 1.5);
       rim.position.set(-3, 4, 3);
       scene.add(rim);
-      const warm = new THREE.DirectionalLight("#D2AE62", 1);
+      const warm = new THREE.DirectionalLight("#FFE6B6", 0.8);
       warm.position.set(4, -1, 2);
       scene.add(warm);
 
@@ -124,7 +181,8 @@ export default function HeroScene() {
         container.removeEventListener("pointerleave", onLeave);
         document.removeEventListener("visibilitychange", onVisibility);
         renderer.domElement.removeEventListener("webglcontextlost", onContextLost);
-        geometry.dispose(); barGeometry.dispose(); silver.dispose(); gold.dispose(); burgundy.dispose();
+        geometry.dispose(); barGeometry.dispose(); grain.dispose();
+        silver.dispose(); gold.dispose(); silverEdge.dispose(); goldEdge.dispose(); burgundy.dispose();
         environment.dispose(); pmrem.dispose(); renderer.dispose(); renderer.domElement.remove();
       };
     }

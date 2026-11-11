@@ -29,6 +29,15 @@ Effectués dans le navigateur intégré avec le site local :
 
 La préférence système `prefers-reduced-motion` et le fallback sans WebGL sont implémentés et relus dans le code. La préférence système de la machine n’a pas été modifiée pour les tests. La copie du brief et l’ouverture effective d’une application de messagerie restent dépendantes des permissions et des applications du visiteur ; le texte du message reste toujours sélectionnable.
 
+## Finition métallique du visuel d’accueil
+
+- Scène Three.js : environnement de studio calculé au chargement, éclairages rectangulaires, texture directionnelle partagée, faces argent/or brossées et biseaux polis. Aucune dépendance ajoutée.
+- TypeScript et build statique : réussis sur la version finale ; les quatre tests existants restent réussis.
+- Accueil vérifié sur ordinateur et à 390 × 844 : scène WebGL chargée, aucun débordement horizontal et aucune erreur ou alerte dans la console.
+- Commandes de pause et de reprise vérifiées dans le navigateur. Le chargement différé, le fallback SVG et les conditions d’arrêt des animations sont conservés.
+- Captures : `screenshots/home-metal-desktop.jpg` et `screenshots/home-metal-mobile.jpg`.
+- Snyk Code tenté : toujours bloqué par l’absence d’authentification ; aucun résultat de sécurité favorable n’est présumé.
+
 ## Limites de cette livraison locale
 
 Pas de déploiement. Le domaine canonique est `hirakode.com` et l’adresse de contact a été confirmée par l’utilisateur. L’envoi est volontairement réalisé par la messagerie du visiteur : aucun backend, aucun stockage de formulaire et aucune fausse confirmation d’envoi.
