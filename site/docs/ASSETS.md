@@ -25,4 +25,24 @@ Les polices sont incluses dans le build et servies localement. Les licences sont
 
 ## Contenu
 
-Les descriptions s’appuient sur les README des trois projets et sur les responsabilités partagées dans `Organisation-Entreprise/sharedFiles/responsabilites-projet.md`. Les fiches présentent des fonctionnalités, sans métriques de performance commerciale ni témoignages inventés. Les offres et textes de marque constituent une première proposition éditoriale pour Hirakode.
+Les descriptions s’appuient sur les README et les sources des quatre projets et sur les responsabilités partagées dans `Organisation-Entreprise/sharedFiles/responsabilites-projet.md`. Les fiches présentent des fonctionnalités documentées et une preuve d’adoption confirmée pour Autotraders. Aucun témoignage ni résultat financier n’est inventé. Les offres et textes de marque constituent une première proposition éditoriale pour Hirakode.
+
+
+## Refonte des projets — 17 novembre 2026
+
+Les captures dans un cadre de navigateur ont été remplacées par quatre compositions spécifiques, réalisées en HTML/CSS : parcours Telegram → IA → MetaTrader, déclarations et synthèse WhalingView, carte GeoDataViz immersive, photo et préférences Ailleurs. Les schémas sont étiquetés comme illustrations, sans opérations, rendements, classements chiffrés ou témoignages fictifs. Les éléments restent rendus côté serveur et n’ajoutent aucune dépendance.
+
+| Ressource | Origine et emploi |
+| --- | --- |
+| `public/images/autotraders.png` | Copie de `autotraders_vitrine/og.png` ; image sociale de la fiche Autotraders. La présentation principale utilise le schéma HTML/CSS. |
+| `public/images/geodataviz-relief.png` | Export PNG natif de [GeoDataViz](https://geodataviz.vercel.app/), effectué dans le navigateur le 17 novembre 2026 : France entière, résolution 16 km, preset Néon cyan, noms des communes désactivés. Hauteur : population ; couleur : pauvreté ; relief statistique amplifié. INSEE Filosofi 2021, Natural Earth, IGN 2026, BD TOPAGE 2026. L’export est conservé intact ; cadrage à l’affichage par CSS. |
+| `public/images/lisbon.jpg` | Copie intacte de `travelideas/public/images/lisbon.jpg`, photographie [Unsplash gwotR6GI0FA](https://unsplash.com/photos/gwotR6GI0FA). Cadrage CSS uniquement. |
+
+### Justification des éléments mis en avant
+
+- **Autotraders : plus de 5 000 utilisateurs actifs.** Le site public annonce plus de 5 000 traders ; le porteur du projet a confirmé explicitement dans cette conversation qu’il s’agit d’utilisateurs actifs. Chiffre communiqué en novembre 2026, sans précision sur la fenêtre de mesure ; ne pas le transformer en utilisateurs actifs mensuels, clients payants ou comptes connectés. La mention de provenance et la date figurent dans la fiche. L’intégration LLM et le routage sont documentés dans `Copyguru/BotOnSteroids/README.md`, `nlp/gpt_processing.py` et `nlp/chat_processing.py` ; l’app dans `webapp-autotraders`.
+- **WhalingView : synthèses IA ancrées dans les sources.** `WhalingView/pipeline/README.md`, `pipeline/src/wv_pipeline/llm/jobs/trade_explainer.py` et `pipeline/src/wv_pipeline/pulse/method.py`. Le score PulseV1 est descriptif et versionné ; aucune promesse de prédiction ou de performance boursière. Le pipeline prévoit contrôle des faits cités, journalisation et repli déterministe.
+- **GeoDataViz : algorithmes et rendu 3D.** README et modules de rendu de `/home/chibrus/Documents/ChatGPT/GeoDataViz` : résolutions multiples, chargement par zones et rendu WebGL instancié. La démo publique a été ouverte et son export utilisé pour le visuel ; les fonctionnalités les plus récentes du dépôt peuvent différer de cette démo.
+- **Ailleurs / Travelideas : 424 destinations dans 99 pays et territoires.** `travelideas/README.md` et `src/lib/travel/{destination-score,journey-score}.ts` : pondération des critères, coût, climat, temps utile, couverture et données manquantes. C’est un algorithme explicable, pas une intégration d’IA générative.
+
+Le porteur du projet confirme que WhalingView, GeoDataViz et Travelideas n’ont pas encore d’utilisateurs. Leur statut « Produit exploratoire » est explicite. Leurs repères sont des caractéristiques du produit, jamais des preuves d’adoption. Les témoignages génériques trouvés dans les sources marketing Autotraders n’ont pas été repris, faute de provenance.

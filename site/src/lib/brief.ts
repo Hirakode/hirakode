@@ -1,6 +1,6 @@
 export type Brief = { name: string; email: string; company: string; need: string; message: string };
 export type BriefErrors = Partial<Record<keyof Brief, string>>;
-export const needLabels: Record<string, string> = { solutions: "Créer une solution", transformation: "Transformer nos pratiques", exploration: "Explorer une idée" };
+export const needLabels: Record<string, string> = { solutions: "Créer une solution", transformation: "Transformer notre entreprise avec l’IA", exploration: "Explorer une idée" };
 
 export function validateBrief(brief: Brief): BriefErrors {
   const errors: BriefErrors = {};

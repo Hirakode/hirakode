@@ -28,7 +28,7 @@ python -m http.server 4321 --bind 127.0.0.1 --directory out
 
 ## Structure
 
-- `src/app` : accueil, projets, trois études de cas, expertises, studio, contact, crédits et page 404 ; métadonnées, sitemap, robots et image sociale.
+- `src/app` : accueil, transformation IA, projets, quatre études de cas, expertises, studio, contact, crédits et page 404 ; métadonnées, sitemap, robots et image sociale.
 - `src/lib/content.ts` : contenus, équipe, offres et projets.
 - `src/lib/brief.ts` : validation et préparation du mailto.
 - `src/components` : navigation, pied de page, scène 3D et composants éditoriaux.
@@ -43,8 +43,15 @@ Le formulaire prépare un e-mail vers **contact@hirakode.com** et permet de copi
 
 La scène Three.js est chargée séparément. Son animation s’arrête hors écran, dans un onglet masqué, à la demande via le bouton pause ou quand le système demande de réduire les animations. Un symbole SVG reste visible si WebGL est indisponible. Le menu utilise un dialogue natif pour le focus et la fermeture au clavier.
 
+La transformation IA dispose d’une section d’accueil avant les projets et d’une page `/transformation-ia/`, accessible depuis le menu, les expertises et le pied de page. Les appels au contact présélectionnent le besoin correspondant. Cette nouvelle offre présente une démarche proposée, des usages possibles et le savoir-faire technique du studio ; aucun cas client de transformation, témoignage ou résultat chiffré n’est inventé. La FAQ précise que cette activité démarre.
+
 ## Avant une publication
 
 Les URL canoniques utilisent `https://hirakode.com`, en cohérence avec l’adresse communiquée. Confirmer le domaine de publication et les informations légales de l’entreprise au moment de la mise en ligne. Les mentions légales ne sont pas inventées dans cette version. Le contenu éditorial et les rôles sont prêts à relire avec les trois associés.
 
 Le dépôt source est disponible sur [GitHub](https://github.com/Hirakode/hirakode). Aucun déploiement n’a été réalisé.
+
+
+## Présentation des projets
+
+Autotraders.ai ouvre désormais la sélection avec plus de 5 000 utilisateurs actifs (chiffre confirmé par le porteur du projet, novembre 2026). Les quatre projets disposent de compositions visuelles dédiées, d’une explication de l’IA ou des algorithmes intégrés, d’un parcours technique et d’un appel au contact. WhalingView, GeoDataViz et Travelideas sont identifiés comme produits exploratoires ; leurs caractéristiques ne sont pas présentées comme des chiffres d’adoption. Les sources et les médias sont détaillés dans `docs/ASSETS.md`.

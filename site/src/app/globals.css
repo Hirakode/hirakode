@@ -71,12 +71,12 @@
   .menu-close > span { @apply text-3xl font-light leading-none; }
   .menu-content { @apply grid flex-1 grid-cols-[1.4fr_1fr] items-center gap-16 py-20; }
   .menu-content nav { @apply flex flex-col gap-1; }
-  .menu-content nav a { @apply flex items-center gap-6 py-2 font-display text-[clamp(3rem,6.7vw,8rem)] leading-[1.13] tracking-[-0.03em]; }
-  .menu-content nav a > span:nth-child(2) { @apply transition-transform duration-500; }
+  .menu-content nav a { @apply flex items-center gap-6 py-2 font-display text-[clamp(2.5rem,5.4vw,6.5rem)] leading-[1.13] tracking-[-0.03em]; }
+  .menu-content nav a > span:nth-child(2) { @apply min-w-0 transition-transform duration-500; }
   .menu-content nav a:hover > span:nth-child(2) { @apply translate-x-3 italic; }
   .menu-content nav a[aria-current="page"] { @apply text-gold; }
   .menu-index { @apply w-5 self-start pt-5 font-sans text-[10px] tracking-normal; }
-  .menu-content nav svg { @apply ml-auto h-10 w-10 opacity-0 transition-opacity; }
+  .menu-content nav svg { @apply ml-auto h-10 w-10 shrink-0 opacity-0 transition-opacity; }
   .menu-content nav a:hover svg { @apply opacity-100; }
   .menu-content aside { @apply justify-self-end; }
   .menu-content aside > p { @apply mb-10 mt-5 text-lg leading-relaxed; }
@@ -118,38 +118,88 @@
   .work-heading { @apply mb-16 flex items-end justify-between gap-12; }
   .work-heading .eyebrow { @apply mb-8; }
   .work-heading > p { @apply pb-2 text-[13px] leading-[1.8] text-silver; }
-  .project-list { @apply flex flex-col gap-20; }
-  .project-item { @apply w-full; }
-  .project-link { @apply block; }
-  .project-visual { @apply relative isolate flex aspect-[1.9] items-center justify-center overflow-hidden; }
-  .project-whaling { @apply bg-burgundy; }
-  .project-geo { @apply bg-silver/10; background-image: radial-gradient(ellipse at 50% 30%, #C0C4CA22, transparent 65%); }
-  .project-travel { @apply bg-paper; }
-  .project-visual::before { @apply pointer-events-none absolute inset-8 rounded-[50%] border border-paper/10 content-['']; }
-  .project-travel::before { @apply border-gold/40; }
-  .visual-coordinate { @apply absolute left-6 top-6 text-[9px] tracking-[0.15em] text-paper/80; }
-  .visual-caption { @apply absolute bottom-5 right-6 text-[9px] tracking-[0.05em] text-paper/80; }
-  .project-travel .visual-coordinate, .project-travel .visual-caption { @apply text-silver-ink; }
-  .project-screen { @apply relative w-[79%] overflow-hidden rounded-[7px] border border-paper/20 bg-night transition-transform duration-700 ease-editorial; box-shadow: 0 30px 70px #11101355; }
-  .project-link:hover .project-screen { scale: 1.035; }
-  .screen-chrome { @apply flex h-7 items-center gap-[5px] border-b border-paper/10 bg-night px-3; }
-  .screen-chrome > span { @apply h-[4px] w-[4px] rounded-full bg-silver/45; }
-  .screen-chrome p { @apply absolute left-1/2 -translate-x-1/2 text-[8px] tracking-wider text-silver/85; }
-  .screen-chrome .screen-status { @apply ml-auto bg-gold/70; }
-  .screen-image { @apply relative overflow-hidden; }
-  .screen-image img { @apply w-full; }
-  .project-travel .screen-image { @apply aspect-[2.15]; }
-  .project-travel .screen-image img { @apply h-full w-full object-cover object-top; }
-  .project-whaling .project-screen { @apply w-[83%]; }
-  .project-geo .project-screen { @apply w-[77%]; }
-  .project-meta { @apply mt-6 flex items-center gap-10; }
-  .project-title { @apply flex items-center gap-5; }
-  .project-number { @apply text-[10px] text-silver; }
-  .project-title h3 { @apply text-[clamp(1.5rem,2.6vw,2.8rem)] font-medium tracking-[-0.05em]; }
-  .project-meta > p { @apply ml-auto text-xs text-silver; }
-  .project-meta .round-arrow { @apply h-11 w-11; }
-  .project-link:hover .round-arrow { @apply rotate-45 bg-paper text-night; }
-  .project-category { @apply ml-9 mt-1 text-[10px] text-silver/75; }
+  .project-list { @apply flex flex-col gap-24; }
+  .project-item { @apply grid grid-cols-[1.35fr_1fr] items-center gap-[5vw]; }
+  .project-item:nth-child(even) { @apply grid-cols-[1fr_1.35fr]; }
+  .project-item:nth-child(even) .project-art-link { @apply order-2; }
+  .project-art-link { @apply block min-w-0; }
+  .project-editorial { @apply min-w-0 py-5; }
+  .project-labels { @apply mb-8 flex flex-wrap items-center gap-x-4 gap-y-3 text-[10px] leading-relaxed text-silver; }
+  .project-labels > span:first-child { @apply text-gold; }
+  .project-labels > span:last-child { @apply border-l border-paper/25 pl-4; }
+  .project-live::before { @apply mr-2 inline-block h-1.5 w-1.5 rounded-full bg-gold content-['']; }
+  .project-editorial h3 { @apply text-[clamp(1.2rem,1.7vw,2rem)] font-medium tracking-tight; }
+  .project-promise { @apply mb-6 mt-4 max-w-[420px] font-display text-[clamp(2.3rem,3.6vw,4.4rem)] leading-[1.05] tracking-tight; }
+  .project-summary { @apply max-w-[420px] text-[13px] leading-[1.9] text-silver; }
+  .project-evidence { @apply my-8 flex items-center gap-5 border-y border-paper/20 py-6; }
+  .project-evidence > strong { @apply shrink-0 font-display text-[clamp(2rem,3.4vw,4rem)] font-normal leading-none text-gold; }
+  .project-evidence > span { @apply max-w-[200px] text-[11px] leading-relaxed; }
+  .project-evidence small { @apply mt-2 block text-[9px] text-silver; }
+  .project-editorial > .text-link { @apply text-xs; }
+  .project-visual { @apply relative isolate aspect-[1.12] min-h-[480px] w-full overflow-hidden; container-type: inline-size; }
+  .project-scene { @apply absolute inset-0 overflow-hidden; }
+  .scene-brand { @apply absolute left-[8%] right-[8%] top-[7%] z-10 flex items-baseline justify-between text-[clamp(18px,4cqw,32px)] font-semibold tracking-[-.05em]; }
+  .scene-brand > span { @apply text-[clamp(10px,1.8cqw,14px)] font-normal tracking-normal; }
+  .scene-caption { @apply absolute bottom-[4%] left-[8%] right-[8%] z-10 text-[clamp(8px,1.6cqw,11px)] leading-relaxed; }
+  .project-auto { @apply bg-[#0b222b] text-[#e6f5fa]; background-image: linear-gradient(135deg, #163b47, #09181f 70%); }
+  .project-auto .scene-brand > span { @apply mr-auto text-[1em] text-[#83d7ec]; }
+  .auto-route { @apply absolute left-[12%] right-[12%] top-[23%] mx-auto max-w-[650px]; }
+  .signal-message { @apply relative z-10 rounded-[12px_12px_12px_0] border border-[#7cc5d5]/25 bg-[#173a46] p-[5%] shadow-xl; }
+  .signal-source { @apply flex items-center gap-2 text-[clamp(10px,2cqw,16px)] text-[#b4d4de]; }
+  .signal-source > span { @apply flex h-6 w-6 items-center justify-center rounded-full bg-[#83d7ec] text-[#0b222b]; }
+  .signal-source small { @apply ml-auto text-[.75em]; }
+  .signal-message > p { @apply my-4 text-[clamp(18px,3.8cqw,30px)] font-medium tracking-tight; }
+  .signal-fields { @apply flex flex-wrap gap-x-5 gap-y-2 text-[clamp(9px,1.8cqw,13px)] text-[#b4d4de]; }
+  .auto-engine { @apply relative flex min-h-[100px] items-center gap-4 py-6 pl-[8%]; }
+  .engine-line { @apply absolute bottom-0 left-[13%] top-0 w-px bg-[#83d7ec]/50; }
+  .engine-core { @apply relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#83d7ec]/60 bg-[#0b222b] text-lg font-semibold text-[#83d7ec]; box-shadow: 0 0 35px #83d7ec20; }
+  .auto-engine > div { @apply relative z-10; }
+  .auto-engine strong { @apply block max-w-[250px] text-[clamp(11px,2.2cqw,16px)] font-medium leading-snug; }
+  .auto-engine div > span { @apply mt-2 block text-[clamp(8px,1.6cqw,11px)] text-[#b4d4de]; }
+  .execution-ticket { @apply flex items-center justify-between gap-4 rounded-lg border border-[#83d7ec]/30 bg-[#e6f5fa] px-[6%] py-[5%] text-[#0b222b]; }
+  .execution-ticket > div { @apply flex items-center gap-3 text-[clamp(13px,2.8cqw,20px)] leading-snug; }
+  .execution-check { @apply flex h-8 w-8 items-center justify-center rounded-full border border-[#0b222b]/25; }
+  .execution-destination { @apply border-l border-[#0b222b]/20 pl-4 text-[clamp(9px,1.7cqw,12px)] leading-relaxed; }
+  .execution-destination b { @apply text-lg font-medium; }
+  .project-whaling { @apply bg-burgundy text-paper; }
+  .whaling-composition { @apply absolute inset-x-[8%] bottom-[12%] top-[23%] mx-auto max-w-[730px]; }
+  .filing-stack { @apply absolute inset-x-[4%] top-0 h-[72%]; }
+  .filing-stack > div { @apply absolute left-[4%] top-[16%] h-[95%] w-[80%] rotate-[-7deg] border border-paper/25 bg-[#92394c] p-[6%] shadow-xl; }
+  .filing-stack > div:nth-child(2) { @apply left-[14%] top-[7%] rotate-[5deg] bg-[#a05362]; }
+  .filing-stack > div:nth-child(3) { @apply left-[8%] top-[27%] rotate-[-2deg] bg-[#eee7e3] text-night; }
+  .filing-stack span { @apply block text-[clamp(9px,1.8cqw,13px)]; }
+  .filing-stack strong { @apply mt-3 block text-[clamp(12px,2.7cqw,20px)] font-medium; }
+  .filing-stack i { @apply mt-3 block h-px w-[85%] bg-current/15; }
+  .filing-stack i:last-child { @apply w-[65%]; }
+  .whaling-insight { @apply absolute -right-[2%] bottom-0 left-[15%] z-10 bg-[#20191c] px-[7%] py-[6%] shadow-2xl; }
+  .insight-label { @apply text-[clamp(9px,1.8cqw,13px)] text-gold; }
+  .whaling-insight > p { @apply mb-5 mt-3 font-display text-[clamp(22px,4.7cqw,40px)] leading-[1.1]; }
+  .insight-footer { @apply flex items-center gap-3 border-t border-paper/20 pt-4 text-[clamp(8px,1.8cqw,13px)] leading-relaxed text-silver; }
+  .insight-footer b { @apply font-normal text-paper; }
+  .insight-symbol { @apply text-[30px] text-gold; }
+  .insight-footer > span:last-child { @apply ml-auto text-lg text-gold; }
+  .project-geo { @apply bg-[#0b1020] text-[#e9f4e9]; }
+  .geo-landscape { @apply object-cover object-center; transform: scale(1.08); }
+  .geo-shade { @apply absolute inset-0; background: linear-gradient(180deg, #0b1020 0%, #0b102060 25%, transparent 53%, #0b1020 100%); }
+  .geo-title { @apply absolute left-[8%] top-[18%] font-display text-[clamp(36px,7.5cqw,80px)] leading-[.98]; }
+  .geo-title em { @apply text-[#91deed]; }
+  .geo-legend { @apply absolute bottom-[12%] left-[8%] flex items-center gap-3 text-[clamp(9px,1.8cqw,13px)] leading-relaxed; }
+  .geo-legend > span { @apply h-9 w-1 bg-[#91deed]; }
+  .geo-legend b { @apply font-normal text-[#91deed]; }
+  .project-travel { @apply bg-[#17666c] text-white; }
+  .travel-landscape { @apply object-cover object-[50%_60%]; }
+  .travel-shade { @apply absolute inset-0; background: linear-gradient(180deg, #05383cbb, #05383c77 45%, #05383c10 65%, #11101390); }
+  .project-travel .scene-brand { @apply font-display text-[clamp(27px,5.8cqw,46px)] font-normal; }
+  .travel-title { @apply absolute left-[8%] top-[20%] font-display text-[clamp(40px,8cqw,85px)] leading-[.95]; }
+  .travel-preferences { @apply absolute bottom-[12%] right-[8%] w-[64%] max-w-[410px] bg-paper px-[5%] py-[4%] text-night shadow-xl; }
+  .travel-preferences > span { @apply text-[clamp(9px,1.8cqw,13px)] text-silver-ink; }
+  .travel-preferences > div { @apply mt-3 flex items-center gap-3 text-[clamp(11px,2.3cqw,17px)]; }
+  .travel-preferences i { @apply h-px flex-1 bg-night/20; }
+  .travel-preferences b { @apply text-[.75em] font-normal text-burgundy; }
+  .travel-preferences > p { @apply mt-4 border-t border-night/15 pt-3 text-[clamp(8px,1.6cqw,11px)] text-silver-ink; }
+  .portfolio-intro-proof { @apply mt-8 flex items-start gap-3 text-xs leading-[1.8] text-silver; }
+  .portfolio-intro-proof strong { @apply font-medium text-paper; }
+  .portfolio-proof-dot { @apply mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold; }
   .services-section { @apply bg-paper pb-28 pt-32 text-night; }
   .section-heading { @apply relative mb-20; }
   .section-heading .eyebrow { @apply mb-8; }
@@ -202,7 +252,7 @@
   .footer-title > svg { @apply absolute bottom-2 right-0 h-[8vw] w-[8vw] transition-transform duration-500; }
   .footer-title:hover > svg { @apply -translate-y-3 translate-x-3; }
   .footer-meta { @apply mb-24 mt-16 flex items-center justify-between gap-10; }
-  .footer-links { @apply flex gap-7 text-xs; }
+  .footer-links { @apply flex flex-wrap gap-x-7 gap-y-4 text-xs; }
   .footer-links a { @apply transition-colors hover:text-gold; }
   .footer-signature { @apply flex items-center justify-between gap-[3vw] border-t border-paper/20 pt-10; }
   .footer-signature > svg { @apply w-[16%] shrink-0 text-silver; }
@@ -226,7 +276,24 @@
   .case-headline h2 { @apply text-[clamp(2.3rem,4.2vw,5rem)]; }
   .case-headline p { @apply max-w-[430px] self-end text-sm leading-[1.9] text-silver; }
   .case-hero { @apply px-5; }
-  .project-visual-detail { @apply aspect-[1.8]; }
+  .project-visual-detail { @apply aspect-[1.9] min-h-[600px] max-h-[740px]; }
+  .project-visual-detail .auto-route { @apply top-[18%]; }
+  .case-proof { @apply grid grid-cols-[.8fr_1.2fr] items-center gap-[10vw] py-20; }
+  .case-proof-value > span { @apply mb-5 block text-xs text-silver; }
+  .case-proof-value > strong { @apply block font-display text-[clamp(4rem,8vw,8rem)] font-normal leading-none text-gold; }
+  .case-proof-value h2 { @apply mt-4 max-w-[360px] font-sans text-base leading-relaxed tracking-normal; }
+  .case-proof-copy p { @apply max-w-[520px] text-sm leading-[1.9] text-silver; }
+  .case-proof-copy .text-link { @apply mt-7 text-xs; }
+  .case-mechanism { @apply py-24; }
+  .case-mechanism-heading { @apply grid grid-cols-[.5fr_1fr] gap-12; }
+  .case-mechanism-heading > .eyebrow { @apply pt-2; }
+  .case-mechanism h2 { @apply max-w-[800px] text-[clamp(2.6rem,4.5vw,5.5rem)]; }
+  .case-mechanism ol { @apply mt-16 grid list-none grid-cols-3 gap-10 p-0; }
+  .case-mechanism li { @apply border-t border-paper/25 pt-6; }
+  .case-mechanism li > span { @apply text-xs text-gold; }
+  .case-mechanism h3 { @apply mb-4 mt-7 text-lg font-medium; }
+  .case-mechanism li p { @apply text-[13px] leading-[1.9] text-silver; }
+  .case-statement > .text-link { @apply mt-10; }
   .case-story { @apply grid grid-cols-2 gap-[9vw] bg-paper py-28 text-night; }
   .case-story .eyebrow { @apply mb-8; }
   .case-story h2 { @apply text-[clamp(2.8rem,4.7vw,5.5rem)]; }
@@ -262,6 +329,60 @@
   .deliverables { @apply mt-8 border-t border-current/20 pt-6; }
   .deliverables p { @apply mt-4 text-sm leading-[1.9]; }
   .expertise-transformation { @apply border-t border-night/20 bg-silver; }
+  .expertise-detail-links { @apply flex flex-col items-start gap-6; }
+  .transformation-overview { @apply grid grid-cols-[1.15fr_.85fr] gap-[8vw] bg-burgundy py-28; }
+  .transformation-overview h2 { @apply mb-8 mt-9 text-[clamp(3rem,4.8vw,5.8rem)]; }
+  .transformation-overview h2 em { @apply text-gold; }
+  .transformation-overview > div > p { @apply mb-8 max-w-[490px] text-sm leading-[1.9] text-paper/85; }
+  .transformation-path { @apply self-center border-l border-paper/25 pl-[4vw]; }
+  .transformation-path > p:first-child { @apply font-display text-3xl leading-snug text-paper; }
+  .transformation-path ol { @apply m-0 list-none p-0; }
+  .transformation-path li { @apply flex items-center gap-5 border-t border-paper/25 py-5; }
+  .transformation-path li > span { @apply self-start pt-2 text-[10px] text-gold; }
+  .transformation-path h3 { @apply font-display text-3xl; }
+  .transformation-path li p { @apply mt-1 text-xs leading-relaxed text-paper/85; }
+  .transformation-path svg { @apply ml-auto h-4 w-4 shrink-0 text-gold; }
+  .transformation-path > .transformation-path-note { @apply mb-0 mt-6 text-xs; }
+  .transformation-intro { @apply pb-24; }
+  .transformation-opening { @apply mt-14 grid grid-cols-[1.3fr_.7fr] gap-[10vw]; }
+  .transformation-opening > div > p { @apply max-w-[640px] text-sm leading-[1.9] text-silver; }
+  .transformation-opening > div > p:first-child { @apply mb-6 text-xl leading-relaxed text-paper; }
+  .transformation-actions { @apply mt-9 flex flex-wrap items-center gap-7; }
+  .transformation-first-step { @apply border-l border-gold/50 pl-8; }
+  .transformation-first-step .eyebrow { @apply text-gold; }
+  .transformation-first-step h2 { @apply my-5 text-[clamp(2.5rem,3.5vw,4.2rem)] leading-[1.05]; }
+  .transformation-first-step p { @apply max-w-[260px] text-xs leading-[1.9] text-silver; }
+  .transformation-use-cases { @apply bg-paper py-28 text-night; }
+  .transformation-use-cases .work-heading > p { @apply text-silver-ink; }
+  .transformation-use-case { @apply grid grid-cols-2 gap-[9vw] border-t border-night/20 py-9; }
+  .transformation-use-case h3 { @apply mb-4 font-display text-[clamp(2rem,3.1vw,3.5rem)] leading-tight; }
+  .transformation-use-case p { @apply max-w-[530px] text-sm leading-[1.9] text-silver-ink; }
+  .transformation-use-case .transformation-measure { @apply mt-5 text-xs text-night; }
+  .transformation-measure > span { @apply mb-1 block font-semibold; }
+  .transformation-context { @apply mt-7 max-w-[750px] text-xs leading-[1.9] text-silver-ink; }
+  .transformation-steps { @apply m-0 list-none p-0; }
+  .transformation-deliverable { @apply mt-5 border-l border-gold/70 pl-4; }
+  .transformation-deliverable .eyebrow { @apply mb-2 text-gold; }
+  .transformation-deliverable p { @apply text-paper; }
+  .transformation-trust { @apply grid grid-cols-2 gap-[9vw] bg-paper py-28 text-night; }
+  .transformation-trust h2 { @apply my-8; }
+  .transformation-trust > div > p { @apply mb-8 max-w-[500px] text-sm leading-[1.9] text-silver-ink; }
+  .transformation-commitments article { @apply border-t border-night/20 py-7 first:pt-0 first:border-t-0; }
+  .transformation-commitments h3 { @apply mb-4 font-display text-3xl; }
+  .transformation-commitments p { @apply max-w-[520px] text-sm leading-[1.9] text-silver-ink; }
+  .transformation-foundations { @apply py-24; }
+  .transformation-projects { @apply grid grid-cols-2 gap-x-12 gap-y-10; }
+  .transformation-projects > a { @apply flex flex-col border-t border-paper/30 pt-6 transition-colors hover:border-gold; }
+  .transformation-projects h3 { @apply mb-4 text-xl tracking-tight; }
+  .transformation-projects p { @apply mb-8 text-sm leading-[1.9] text-silver; }
+  .transformation-projects a > span { @apply mt-auto flex items-center gap-5 text-xs text-gold; }
+  .transformation-projects svg { @apply h-4 w-4; }
+  .transformation-foundations .transformation-context { @apply mt-12 text-silver; }
+  .transformation-invitation { @apply border-b border-paper/20 bg-burgundy py-24; }
+  .transformation-invitation h2 { @apply my-8; }
+  .transformation-invitation h2 em { @apply text-gold; }
+  .transformation-invitation div > p { @apply mb-8 max-w-[590px] text-sm leading-[1.9] text-paper/85; }
+  .transformation-invitation-note { @apply mt-7 text-xs leading-[1.9] text-paper/85; }
   .faq-section { @apply grid grid-cols-2 gap-[9vw] bg-paper py-28 text-night; }
   .faq-section h2 { @apply mt-8; }
   .faq-list details { @apply border-t border-night/20 py-6; }
@@ -333,6 +454,9 @@
 }
 
 @media (max-width: 1000px) {
+  .project-item, .project-item:nth-child(even) { @apply grid-cols-1 gap-8; }
+  .project-item:nth-child(even) .project-art-link { @apply order-none; }
+  .project-editorial { @apply max-w-[650px]; }
   .hero h1 { @apply text-[11.2vw]; }
   .hero-description { @apply max-w-[205px]; }
   .hero-description > p { @apply text-xs; }
@@ -357,7 +481,8 @@
   .header-contact svg { @apply h-5 w-5; }
   .menu-inner { @apply px-6 pt-7; }
   .menu-content { @apply grid-cols-1 gap-10 py-14; }
-  .menu-content nav a { @apply gap-4 text-[14vw]; }
+  .menu-content nav a { @apply gap-3 text-[11vw]; }
+  .menu-content nav svg { @apply h-6 w-6; }
   .menu-index { @apply pt-3; }
   .menu-content aside { @apply w-full justify-self-start; }
   .menu-content aside > p { @apply mb-5 mt-3 text-sm; }
@@ -390,22 +515,25 @@
   .work-heading { @apply mb-10 flex-col items-start gap-6; }
   .work-heading .eyebrow { @apply mb-6; }
   .work-heading > p { @apply text-xs; }
-  .project-list { @apply gap-12; }
-  .project-visual { @apply aspect-[1.2]; }
-  .project-screen, .project-whaling .project-screen, .project-geo .project-screen { @apply w-[93%]; }
-  .project-visual::before { @apply inset-4; }
-  .screen-chrome { @apply h-5; }
-  .screen-chrome > span { @apply h-[3px] w-[3px]; }
-  .screen-chrome p { @apply text-[6px]; }
-  .visual-coordinate { @apply left-4 top-4 text-[8px]; }
-  .visual-caption { @apply bottom-4 right-4 text-[8px]; }
-  .project-meta { @apply mt-4 flex-wrap gap-2; }
-  .project-title { @apply gap-3; }
-  .project-title h3 { @apply text-[26px]; }
-  .project-meta > p { @apply order-3 ml-7 w-full text-[11px]; }
-  .project-meta .round-arrow { @apply ml-auto h-9 w-9; }
-  .project-meta .round-arrow svg { @apply h-4 w-4; }
-  .project-category { @apply ml-7 mt-2 text-[8px]; }
+  .project-list { @apply gap-16; }
+  .project-item, .project-item:nth-child(even) { @apply grid-cols-1 gap-6; }
+  .project-item:nth-child(even) .project-art-link { @apply order-none; }
+  .project-visual, .project-visual-detail { @apply aspect-[.9] min-h-[400px] max-h-none; }
+  .project-editorial { @apply py-0; }
+  .project-labels { @apply mb-5 gap-x-3 text-[9px]; }
+  .project-labels > span:last-child { @apply pl-3; }
+  .project-editorial h3 { @apply text-xl; }
+  .project-promise { @apply mb-4 mt-3 text-[38px]; }
+  .project-summary { @apply text-xs; }
+  .project-evidence { @apply my-6 py-5; }
+  .project-evidence > strong { @apply text-[36px]; }
+  .auto-route { @apply left-[8%] right-[8%] top-[22%]; }
+  .auto-engine { @apply min-h-[88px] gap-3 py-4; }
+  .engine-core { @apply h-10 w-10 text-base; }
+  .signal-message > p { @apply my-3; }
+  .signal-source > span { @apply h-5 w-5; }
+  .execution-check { @apply h-6 w-6; }
+  .travel-preferences { @apply w-[72%]; }
   .services-section, .studio-section { @apply py-20; }
   .section-heading { @apply mb-10; }
   .section-heading .eyebrow { @apply mb-6; }
@@ -449,6 +577,16 @@
   .case-headline h2 { @apply text-[10vw]; }
   .case-headline p { @apply text-xs; }
   .case-hero { @apply px-0; }
+  .case-proof { @apply grid-cols-1 gap-7 py-12; }
+  .case-proof-value > strong { @apply text-7xl; }
+  .case-proof-copy p { @apply text-xs; }
+  .case-mechanism { @apply py-16; }
+  .case-mechanism-heading { @apply grid-cols-1 gap-7; }
+  .case-mechanism h2 { @apply text-[11vw]; }
+  .case-mechanism ol { @apply mt-10 grid-cols-1 gap-8; }
+  .case-mechanism h3 { @apply mb-3 mt-4; }
+  .case-mechanism li p { @apply text-xs; }
+  .case-statement > .text-link { @apply text-xs leading-relaxed; }
   .case-story { @apply grid-cols-1 gap-8 py-16; }
   .case-story h2 { @apply text-[11vw]; }
   .case-narrative { @apply pt-0; }
@@ -471,6 +609,25 @@
   .expertise-description { @apply text-xs; }
   .expertise-content { @apply pt-0; }
   .expertise-content li, .deliverables p { @apply text-xs; }
+  .transformation-overview { @apply grid-cols-1 gap-12 py-20; }
+  .transformation-overview h2 { @apply mt-6 text-[11vw]; }
+  .transformation-path { @apply border-l-0 pl-0; }
+  .transformation-intro { @apply pb-16; }
+  .transformation-opening { @apply mt-8 grid-cols-1 gap-12; }
+  .transformation-opening > div > p:first-child { @apply text-lg; }
+  .transformation-opening > div > p { @apply text-sm; }
+  .transformation-actions { @apply flex-col items-start gap-6; }
+  .transformation-overview .primary-button, .transformation-actions .primary-button, .transformation-invitation .primary-button { @apply gap-4 px-5; }
+  .transformation-first-step { @apply pl-5; }
+  .transformation-first-step h2 { @apply text-4xl; }
+  .transformation-use-cases, .transformation-trust, .transformation-foundations, .transformation-invitation { @apply py-16; }
+  .transformation-use-case, .transformation-trust { @apply grid-cols-1 gap-6; }
+  .transformation-use-case h3 { @apply text-3xl; }
+  .transformation-method .process-step p { @apply text-sm; }
+  .transformation-method .process-step h4 { @apply leading-relaxed; }
+  .transformation-trust { @apply gap-12; }
+  .transformation-projects { @apply grid-cols-1 gap-10; }
+  .transformation-faq .faq-list summary, .transformation-faq .faq-list p { @apply text-sm; }
   .faq-section { @apply grid-cols-1 gap-10 py-16; }
   .faq-list summary { @apply text-xs; }
   .faq-list p { @apply text-[11px]; }
