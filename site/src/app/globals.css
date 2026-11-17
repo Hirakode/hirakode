@@ -141,43 +141,20 @@
   .scene-brand { @apply absolute left-[8%] right-[8%] top-[7%] z-10 flex items-baseline justify-between text-[clamp(18px,4cqw,32px)] font-semibold tracking-[-.05em]; }
   .scene-brand > span { @apply text-[clamp(10px,1.8cqw,14px)] font-normal tracking-normal; }
   .scene-caption { @apply absolute bottom-[4%] left-[8%] right-[8%] z-10 text-[clamp(8px,1.6cqw,11px)] leading-relaxed; }
-  .project-auto { @apply bg-[#0b222b] text-[#e6f5fa]; background-image: linear-gradient(135deg, #163b47, #09181f 70%); }
-  .project-auto .scene-brand > span { @apply mr-auto text-[1em] text-[#83d7ec]; }
-  .auto-route { @apply absolute left-[12%] right-[12%] top-[23%] mx-auto max-w-[650px]; }
-  .signal-message { @apply relative z-10 rounded-[12px_12px_12px_0] border border-[#7cc5d5]/25 bg-[#173a46] p-[5%] shadow-xl; }
-  .signal-source { @apply flex items-center gap-2 text-[clamp(10px,2cqw,16px)] text-[#b4d4de]; }
-  .signal-source > span { @apply flex h-6 w-6 items-center justify-center rounded-full bg-[#83d7ec] text-[#0b222b]; }
-  .signal-source small { @apply ml-auto text-[.75em]; }
-  .signal-message > p { @apply my-4 text-[clamp(18px,3.8cqw,30px)] font-medium tracking-tight; }
-  .signal-fields { @apply flex flex-wrap gap-x-5 gap-y-2 text-[clamp(9px,1.8cqw,13px)] text-[#b4d4de]; }
-  .auto-engine { @apply relative flex min-h-[100px] items-center gap-4 py-6 pl-[8%]; }
-  .engine-line { @apply absolute bottom-0 left-[13%] top-0 w-px bg-[#83d7ec]/50; }
-  .engine-core { @apply relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#83d7ec]/60 bg-[#0b222b] text-lg font-semibold text-[#83d7ec]; box-shadow: 0 0 35px #83d7ec20; }
-  .auto-engine > div { @apply relative z-10; }
-  .auto-engine strong { @apply block max-w-[250px] text-[clamp(11px,2.2cqw,16px)] font-medium leading-snug; }
-  .auto-engine div > span { @apply mt-2 block text-[clamp(8px,1.6cqw,11px)] text-[#b4d4de]; }
-  .execution-ticket { @apply flex items-center justify-between gap-4 rounded-lg border border-[#83d7ec]/30 bg-[#e6f5fa] px-[6%] py-[5%] text-[#0b222b]; }
-  .execution-ticket > div { @apply flex items-center gap-3 text-[clamp(13px,2.8cqw,20px)] leading-snug; }
-  .execution-check { @apply flex h-8 w-8 items-center justify-center rounded-full border border-[#0b222b]/25; }
-  .execution-destination { @apply border-l border-[#0b222b]/20 pl-4 text-[clamp(9px,1.7cqw,12px)] leading-relaxed; }
-  .execution-destination b { @apply text-lg font-medium; }
-  .project-whaling { @apply bg-burgundy text-paper; }
-  .whaling-composition { @apply absolute inset-x-[8%] bottom-[12%] top-[23%] mx-auto max-w-[730px]; }
-  .filing-stack { @apply absolute inset-x-[4%] top-0 h-[72%]; }
-  .filing-stack > div { @apply absolute left-[4%] top-[16%] h-[95%] w-[80%] rotate-[-7deg] border border-paper/25 bg-[#92394c] p-[6%] shadow-xl; }
-  .filing-stack > div:nth-child(2) { @apply left-[14%] top-[7%] rotate-[5deg] bg-[#a05362]; }
-  .filing-stack > div:nth-child(3) { @apply left-[8%] top-[27%] rotate-[-2deg] bg-[#eee7e3] text-night; }
-  .filing-stack span { @apply block text-[clamp(9px,1.8cqw,13px)]; }
-  .filing-stack strong { @apply mt-3 block text-[clamp(12px,2.7cqw,20px)] font-medium; }
-  .filing-stack i { @apply mt-3 block h-px w-[85%] bg-current/15; }
-  .filing-stack i:last-child { @apply w-[65%]; }
-  .whaling-insight { @apply absolute -right-[2%] bottom-0 left-[15%] z-10 bg-[#20191c] px-[7%] py-[6%] shadow-2xl; }
-  .insight-label { @apply text-[clamp(9px,1.8cqw,13px)] text-gold; }
-  .whaling-insight > p { @apply mb-5 mt-3 font-display text-[clamp(22px,4.7cqw,40px)] leading-[1.1]; }
-  .insight-footer { @apply flex items-center gap-3 border-t border-paper/20 pt-4 text-[clamp(8px,1.8cqw,13px)] leading-relaxed text-silver; }
-  .insight-footer b { @apply font-normal text-paper; }
-  .insight-symbol { @apply text-[30px] text-gold; }
-  .insight-footer > span:last-child { @apply ml-auto text-lg text-gold; }
+  .project-auto, .project-whaling, .project-travel { aspect-ratio: 1; }
+  .project-auto { @apply bg-[#071923] text-[#c4f1fc]; background-image: radial-gradient(ellipse at 65% 70%, #164b5a, transparent 70%); }
+  .project-whaling { @apply bg-[#d9e6df] text-[#12565b]; }
+  .project-travel { @apply bg-[#e0e9df] text-[#183f35]; }
+  .interface-heading { @apply absolute inset-x-[6%] top-[5%] flex items-center justify-between gap-4; }
+  .interface-heading > span:first-child { @apply text-[clamp(16px,3.4cqw,25px)] font-semibold tracking-tight; }
+  .interface-heading > span:last-child { @apply text-[clamp(8px,1.6cqw,11px)]; }
+  .interface-main { @apply absolute left-[4%] top-[15%] w-[92%] overflow-hidden rounded-[8px] border border-current/15; box-shadow: 0 20px 45px #031d2326; }
+  .interface-main img { @apply block h-auto w-full; }
+  .interface-detail { @apply absolute bottom-[12%] right-[6%] w-[46%] overflow-hidden rounded-[10px] border border-current/20; box-shadow: 0 16px 40px #031d2333; }
+  .interface-detail img { @apply absolute h-auto max-w-none; }
+  .interface-focus { @apply absolute bottom-[20%] left-[6%] w-[33%] font-display text-[clamp(21px,4cqw,37px)] leading-[1.1] tracking-tight; }
+  .project-whaling .interface-detail { @apply w-[42%]; }
+  .project-travel .interface-detail { @apply w-[38%]; }
   .project-geo { @apply bg-[#0b1020] text-[#e9f4e9]; }
   .geo-landscape { @apply object-cover object-center; transform: scale(1.08); }
   .geo-shade { @apply absolute inset-0; background: linear-gradient(180deg, #0b1020 0%, #0b102060 25%, transparent 53%, #0b1020 100%); }
@@ -186,17 +163,6 @@
   .geo-legend { @apply absolute bottom-[12%] left-[8%] flex items-center gap-3 text-[clamp(9px,1.8cqw,13px)] leading-relaxed; }
   .geo-legend > span { @apply h-9 w-1 bg-[#91deed]; }
   .geo-legend b { @apply font-normal text-[#91deed]; }
-  .project-travel { @apply bg-[#17666c] text-white; }
-  .travel-landscape { @apply object-cover object-[50%_60%]; }
-  .travel-shade { @apply absolute inset-0; background: linear-gradient(180deg, #05383cbb, #05383c77 45%, #05383c10 65%, #11101390); }
-  .project-travel .scene-brand { @apply font-display text-[clamp(27px,5.8cqw,46px)] font-normal; }
-  .travel-title { @apply absolute left-[8%] top-[20%] font-display text-[clamp(40px,8cqw,85px)] leading-[.95]; }
-  .travel-preferences { @apply absolute bottom-[12%] right-[8%] w-[64%] max-w-[410px] bg-paper px-[5%] py-[4%] text-night shadow-xl; }
-  .travel-preferences > span { @apply text-[clamp(9px,1.8cqw,13px)] text-silver-ink; }
-  .travel-preferences > div { @apply mt-3 flex items-center gap-3 text-[clamp(11px,2.3cqw,17px)]; }
-  .travel-preferences i { @apply h-px flex-1 bg-night/20; }
-  .travel-preferences b { @apply text-[.75em] font-normal text-burgundy; }
-  .travel-preferences > p { @apply mt-4 border-t border-night/15 pt-3 text-[clamp(8px,1.6cqw,11px)] text-silver-ink; }
   .portfolio-intro-proof { @apply mt-8 flex items-start gap-3 text-xs leading-[1.8] text-silver; }
   .portfolio-intro-proof strong { @apply font-medium text-paper; }
   .portfolio-proof-dot { @apply mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold; }
@@ -277,7 +243,11 @@
   .case-headline p { @apply max-w-[430px] self-end text-sm leading-[1.9] text-silver; }
   .case-hero { @apply px-5; }
   .project-visual-detail { @apply aspect-[1.9] min-h-[600px] max-h-[740px]; }
-  .project-visual-detail .auto-route { @apply top-[18%]; }
+  .project-visual-detail .interface-main { @apply left-[5%] top-[17%] w-[66%] max-w-[940px]; }
+  .project-visual-detail .interface-detail { @apply bottom-[10%] right-[5%] w-[29%]; }
+  .project-visual-detail.project-whaling .interface-detail { @apply w-[25%]; }
+  .project-visual-detail.project-travel .interface-detail { @apply w-[23%]; }
+  .project-visual-detail .interface-focus { @apply bottom-[10%] text-[clamp(21px,3cqw,37px)]; }
   .case-proof { @apply grid grid-cols-[.8fr_1.2fr] items-center gap-[10vw] py-20; }
   .case-proof-value > span { @apply mb-5 block text-xs text-silver; }
   .case-proof-value > strong { @apply block font-display text-[clamp(4rem,8vw,8rem)] font-normal leading-none text-gold; }
@@ -527,13 +497,11 @@
   .project-summary { @apply text-xs; }
   .project-evidence { @apply my-6 py-5; }
   .project-evidence > strong { @apply text-[36px]; }
-  .auto-route { @apply left-[8%] right-[8%] top-[22%]; }
-  .auto-engine { @apply min-h-[88px] gap-3 py-4; }
-  .engine-core { @apply h-10 w-10 text-base; }
-  .signal-message > p { @apply my-3; }
-  .signal-source > span { @apply h-5 w-5; }
-  .execution-check { @apply h-6 w-6; }
-  .travel-preferences { @apply w-[72%]; }
+  .project-visual-detail .interface-main { @apply left-[4%] top-[15%] w-[92%]; }
+  .project-visual-detail .interface-detail { @apply bottom-[12%] right-[6%] w-[46%]; }
+  .project-visual-detail.project-whaling .interface-detail { @apply w-[42%]; }
+  .project-visual-detail.project-travel .interface-detail { @apply w-[38%]; }
+  .project-visual-detail .interface-focus { @apply bottom-[20%]; }
   .services-section, .studio-section { @apply py-20; }
   .section-heading { @apply mb-10; }
   .section-heading .eyebrow { @apply mb-6; }

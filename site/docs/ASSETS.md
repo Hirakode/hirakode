@@ -30,11 +30,11 @@ Les descriptions s’appuient sur les README et les sources des quatre projets e
 
 ## Refonte des projets — 17 novembre 2026
 
-Les captures dans un cadre de navigateur ont été remplacées par quatre compositions spécifiques, réalisées en HTML/CSS : parcours Telegram → IA → MetaTrader, déclarations et synthèse WhalingView, carte GeoDataViz immersive, photo et préférences Ailleurs. Les schémas sont étiquetés comme illustrations, sans opérations, rendements, classements chiffrés ou témoignages fictifs. Les éléments restent rendus côté serveur et n’ajoutent aucune dépendance.
+La première refonte remplaçait les captures dans un cadre de navigateur par quatre compositions spécifiques, réalisées en HTML/CSS : parcours Telegram → IA → MetaTrader, déclarations et synthèse WhalingView, carte GeoDataViz immersive, photo et préférences Ailleurs. Les schémas sont étiquetés comme illustrations, sans opérations, rendements, classements chiffrés ou témoignages fictifs. Les éléments restent rendus côté serveur et n’ajoutent aucune dépendance.
 
 | Ressource | Origine et emploi |
 | --- | --- |
-| `public/images/autotraders.png` | Copie de `autotraders_vitrine/og.png` ; image sociale de la fiche Autotraders. La présentation principale utilise le schéma HTML/CSS. |
+| `public/images/autotraders.png` | Copie de `autotraders_vitrine/og.png` ; image sociale de la fiche Autotraders. Utilisée lors de la première refonte ; remplacée par la capture réelle ci-dessous. |
 | `public/images/geodataviz-relief.png` | Export PNG natif de [GeoDataViz](https://geodataviz.vercel.app/), effectué dans le navigateur le 17 novembre 2026 : France entière, résolution 16 km, preset Néon cyan, noms des communes désactivés. Hauteur : population ; couleur : pauvreté ; relief statistique amplifié. INSEE Filosofi 2021, Natural Earth, IGN 2026, BD TOPAGE 2026. L’export est conservé intact ; cadrage à l’affichage par CSS. |
 | `public/images/lisbon.jpg` | Copie intacte de `travelideas/public/images/lisbon.jpg`, photographie [Unsplash gwotR6GI0FA](https://unsplash.com/photos/gwotR6GI0FA). Cadrage CSS uniquement. |
 
@@ -46,3 +46,20 @@ Les captures dans un cadre de navigateur ont été remplacées par quatre compos
 - **Ailleurs / Travelideas : 424 destinations dans 99 pays et territoires.** `travelideas/README.md` et `src/lib/travel/{destination-score,journey-score}.ts` : pondération des critères, coût, climat, temps utile, couverture et données manquantes. C’est un algorithme explicable, pas une intégration d’IA générative.
 
 Le porteur du projet confirme que WhalingView, GeoDataViz et Travelideas n’ont pas encore d’utilisateurs. Leur statut « Produit exploratoire » est explicite. Leurs repères sont des caractéristiques du produit, jamais des preuves d’adoption. Les témoignages génériques trouvés dans les sources marketing Autotraders n’ont pas été repris, faute de provenance.
+
+## Interfaces réelles — 17 novembre 2026
+
+À la demande du porteur du projet, les compositions illustratives Autotraders, WhalingView et Ailleurs sont remplacées par des captures des interfaces réelles. Le visuel GeoDataViz, son export, son balisage et ses styles sont conservés à l’identique.
+
+Les six fichiers de `public/images/project-ui/` sont des JPEG natifs du navigateur, sans retouche. Les captures d’accueil sont cadrées sur le haut de la page ; les captures de détail conservent l’écran complet et sont cadrées à l’affichage en CSS. Les couleurs, textes, composants et réglages visibles viennent des produits. Aucun tableau de bord ni chiffre n’est reconstitué.
+
+| Fichier | Source et contenu |
+| --- | --- |
+| `autotraders-home.jpg` | [Site officiel Autotraders](https://www.autotraders.ai/) : accueil bleu nuit et cyan. Également utilisé pour le partage social de la fiche. |
+| `autotraders-settings.jpg` | Même site, section « Votre risque, vos règles » : aperçu des réglages du bot fourni par le site public, sans accès à un compte de trading. |
+| `whalingview-home.jpg` | Build local existant de `WhalingView/apps/web`, servi sur le port 4319 : accueil crème et baleine turquoise. Également utilisé pour le partage social. |
+| `whalingview-sources.jpg` | Même version : sélection des sources Fonds, Dirigeants et Congrès. Cette version contient des données de démonstration ; aucune adoption n’en est déduite. |
+| `travelideas-home.jpg` | Build local existant de `travelideas`, mode hors ligne, port 4318 : accueil Ailleurs et photographie de Lisbonne créditée plus haut. Également utilisé pour le partage social. |
+| `travelideas-budget.jpg` | Même version : réglage du budget par personne dans le panneau « À votre mesure ». Le montant visible est un réglage de démonstration, pas un prix de voyage. |
+
+Les anciens médias restent dans le dépôt mais ne servent plus aux visuels ni aux métadonnées de ces trois fiches. Les détails techniques, statuts et preuves d’adoption des projets sont inchangés. Aucune dépendance ni ressource distante à l’exécution n’est ajoutée.

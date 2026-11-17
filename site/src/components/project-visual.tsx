@@ -2,32 +2,38 @@ import Image from "next/image";
 import type { Project } from "@/lib/content";
 
 const visualDescriptions = {
-  autotraders: "Autotraders : un message Telegram est interprété par l’IA, puis traité selon les règles du compte avant son exécution sur MetaTrader. Schéma illustratif.",
-  whalingview: "WhalingView : des déclarations publiques alimentent un indice descriptif et une synthèse IA vérifiée. Schéma illustratif.",
+  autotraders: "Autotraders : captures du site officiel bleu nuit et cyan, avec son accueil et son aperçu des réglages de risque du bot.",
+  whalingview: "WhalingView : captures de la version locale, avec son accueil crème, sa baleine turquoise et le sélecteur Fonds, Dirigeants et Congrès.",
   geodataviz: "GeoDataViz : vue du produit montrant la France en relief, avec des données INSEE Filosofi 2021.",
-  travelideas: "Ailleurs, développé dans Travelideas : photographie de Lisbonne et illustration des critères budget, climat et temps sur place utilisés pour comparer les destinations.",
+  travelideas: "Ailleurs, développé dans Travelideas : captures de l’accueil vert et crème avec Lisbonne, et du réglage du budget par personne.",
+};
+
+const interfacePreviews = {
+  autotraders: {
+    name: "autotraders.ai", height: 640,
+    focus: "Le risque, selon vos règles.",
+    caption: "Site public · Accueil & aperçu des réglages",
+    detail: { src: "/images/project-ui/autotraders-settings.jpg", width: 1265, height: 889, x: 653, y: 392, cropWidth: 514, cropHeight: 410 },
+  },
+  whalingview: {
+    name: "WhalingView", height: 590,
+    focus: "Remonter aux sources.",
+    caption: "Version locale · Accueil & sélection des sources",
+    detail: { src: "/images/project-ui/whalingview-sources.jpg", width: 1265, height: 949, x: 116, y: 432, cropWidth: 307, cropHeight: 250 },
+  },
+  travelideas: {
+    name: "ailleurs.", height: 600,
+    focus: "Un voyage à votre mesure.",
+    caption: "Version locale · Accueil & budget du voyage",
+    detail: { src: "/images/project-ui/travelideas-budget.jpg", width: 1265, height: 712, x: 32, y: 316, cropWidth: 246, cropHeight: 226 },
+  },
 };
 
 export function ProjectVisual({ project, priority = false, detail = false }: { project: Project; priority?: boolean; detail?: boolean }) {
+  const preview = project.slug === "geodataviz" ? null : interfacePreviews[project.slug];
+
   return <div className={`project-visual ${project.visualClass}${detail ? " project-visual-detail" : ""}`} role="img" aria-label={visualDescriptions[project.slug]}>
     <div className="project-scene" aria-hidden="true">
-      {project.slug === "autotraders" && <>
-        <div className="scene-brand">autotraders<span>.ai</span></div>
-        <div className="auto-route">
-          <div className="signal-message"><span className="signal-source"><span>↗</span> Telegram <small>Signal reçu</small></span><p>EUR/USD · Achat</p><div className="signal-fields"><span>Entrée</span><span>Stop loss</span><span>Take profit</span></div></div>
-          <div className="auto-engine"><span className="engine-line"/><span className="engine-core">IA</span><div><strong>Le message devient une instruction.</strong><span>Interprétation → données structurées</span></div></div>
-          <div className="execution-ticket"><div><span className="execution-check">✓</span><span>Vos règles.<br/><strong>Votre compte.</strong></span></div><span className="execution-destination">MetaTrader<br/><b>4 / 5</b></span></div>
-        </div>
-        <span className="scene-caption">Du signal à l’action · Schéma illustratif</span>
-      </>}
-      {project.slug === "whalingview" && <>
-        <div className="scene-brand">WhalingView<span>↗</span></div>
-        <div className="whaling-composition">
-          <div className="filing-stack"><div><span>SEC · Form 4</span><strong>Transactions d’initiés</strong><i/><i/></div><div><span>SEC · Form 13F</span><strong>Positions déclarées</strong><i/><i/></div><div><span>Congrès américain</span><strong>Déclarations publiques</strong><i/><i/></div></div>
-          <div className="whaling-insight"><span className="insight-label">La donnée, en clair.</span><p>Rapprocher les faits.<br/>Expliquer le contexte.</p><div className="insight-footer"><span className="insight-symbol">✳</span><span>Synthèse IA<br/><b>Faits & sources contrôlés</b></span><span>↗</span></div></div>
-        </div>
-        <span className="scene-caption">De la déclaration à l’explication · Illustration</span>
-      </>}
       {project.slug === "geodataviz" && <>
         <Image className="geo-landscape" src={project.image} alt="" fill priority={priority} sizes={detail ? "100vw" : "(max-width: 1000px) 90vw, 55vw"}/>
         <div className="geo-shade"/>
@@ -36,13 +42,17 @@ export function ProjectVisual({ project, priority = false, detail = false }: { p
         <div className="geo-legend"><span/><div>La population dessine le territoire.<br/><b>France · INSEE Filosofi 2021</b></div></div>
         <span className="scene-caption">Export du produit · Relief statistique amplifié</span>
       </>}
-      {project.slug === "travelideas" && <>
-        <Image className="travel-landscape" src={project.image} alt="" fill priority={priority} sizes={detail ? "100vw" : "(max-width: 1000px) 90vw, 55vw"}/>
-        <div className="travel-shade"/>
-        <div className="scene-brand">ailleurs<span>par Travelideas</span></div>
-        <p className="travel-title">Et si c’était<br/><em>Lisbonne ?</em></p>
-        <div className="travel-preferences"><span>Ce qui compte pour vous</span><div><span>Budget</span><i/><b>01</b></div><div><span>Climat</span><i/><b>02</b></div><div><span>Temps sur place</span><i/><b>03</b></div><p>Des priorités. Un classement expliqué.</p></div>
-        <span className="scene-caption">Illustration des critères · Photo de Lisbonne</span>
+      {preview && <>
+        <div className="interface-heading"><span>{preview.name}</span><span>Dans le produit ↗</span></div>
+        <div className="interface-main">
+          <Image src={project.image} alt="" width={1250} height={preview.height} preload={priority} sizes={detail ? "(max-width: 767px) 90vw, 70vw" : "(max-width: 1000px) 90vw, 55vw"}/>
+        </div>
+        <p className="interface-focus">{preview.focus}</p>
+        <div className="interface-detail" style={{ aspectRatio: `${preview.detail.cropWidth} / ${preview.detail.cropHeight}` }}>
+          <Image src={preview.detail.src} alt="" width={preview.detail.width} height={preview.detail.height} sizes={detail ? "100vw" : "(max-width: 1000px) 170vw, 85vw"}
+            style={{ width: `${preview.detail.width / preview.detail.cropWidth * 100}%`, left: `${-preview.detail.x / preview.detail.cropWidth * 100}%`, top: `${-preview.detail.y / preview.detail.cropHeight * 100}%` }}/>
+        </div>
+        <span className="scene-caption">{preview.caption}</span>
       </>}
     </div>
   </div>;

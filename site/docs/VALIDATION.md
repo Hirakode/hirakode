@@ -70,3 +70,15 @@ Les informations administratives nécessaires aux mentions légales ne figuraien
 - Captures : `screenshots/projects-desktop.jpg`, `screenshots/projects-mobile.jpg`, `screenshots/projects-geodataviz.jpg`.
 - Scan `snyk_code_scan` tenté : bloqué par l’absence d’authentification (« User not authenticated. Please run snyk_auth first »). Aucune conclusion Snyk sur la sécurité.
 - Aucune nouvelle dépendance, aucun commit, push ou déploiement. Serveur local de contrôle arrêté en fin de tâche.
+
+## Visuels fidèles aux interfaces — 17 novembre 2026
+
+- Autotraders, WhalingView et Ailleurs : six captures natives intégrées dans des compositions aux couleurs des produits. Les gros plans cadrent les réglages du site public Autotraders, la sélection des sources WhalingView et le budget Ailleurs. Captures sources et cadrages documentés dans `ASSETS.md`.
+- Accueil, index et fiches utilisent le composant partagé ; métadonnées, descriptions accessibles et crédits mis à jour. Le chiffre d’adoption Autotraders et les statuts des autres projets restent inchangés.
+- GeoDataViz : comparaison avec le commit précédent, balisage du visuel et styles spécifiques/partagés identiques ; image et contenu inchangés.
+- TypeScript, ESLint et quatre tests existants réussis. Build statique final réussi après ajustement du cadrage sur les fiches : 16 pages. `git diff --check` sans erreur.
+- Navigateur sur export statique : trois compositions inspectées sur ordinateur, quatre fiches contrôlées à 320 px, Autotraders à 390 px, index à 320 / 820 / 1024 / 1440 px et fiche WhalingView à 1920 px. Aucun débordement horizontal ; captures chargées. Accueil contrôlé avec les trois nouveaux visuels.
+- Espacement de la légende éditoriale et de la capture principale corrigé sur les fiches larges, puis vérifié. Aucun avertissement ni erreur observé dans la console du navigateur de contrôle.
+- Captures de contrôle : `screenshots/projects-real-ui-desktop.jpg`, `screenshots/projects-real-ui-mobile.jpg`, `screenshots/projects-real-ui-whalingview.jpg`, `screenshots/projects-real-ui-travelideas.jpg`.
+- Snyk Code tenté : toujours bloqué par l’absence d’authentification. Aucun résultat de sécurité favorable n’est présumé.
+- Aucune dépendance ajoutée. Cette modification reste locale, sans nouveau commit, push ou déploiement.
