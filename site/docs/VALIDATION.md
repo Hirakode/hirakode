@@ -82,3 +82,16 @@ Les informations administratives nécessaires aux mentions légales ne figuraien
 - Captures de contrôle : `screenshots/projects-real-ui-desktop.jpg`, `screenshots/projects-real-ui-mobile.jpg`, `screenshots/projects-real-ui-whalingview.jpg`, `screenshots/projects-real-ui-travelideas.jpg`.
 - Snyk Code tenté : toujours bloqué par l’absence d’authentification. Aucun résultat de sécurité favorable n’est présumé.
 - Aucune dépendance ajoutée. Cette modification reste locale, sans nouveau commit, push ou déploiement.
+
+
+## Corrections éditoriales — 19 novembre 2026
+
+- Studio : titre, présentation, valeurs et descriptions des associés corrigés selon les textes fournis. Le rôle de Gaël est partagé avec l’accueil et la page Transformation IA.
+- Transformation IA : nouveau titre, quatre objectifs transversaux, démarche en cinq étapes partagée avec l’accueil, présentation de l’équipe adaptée à l’IA, FAQ simplifiée et liens vers `contact@hirakode.com`. Encarts et sections désignés retirés.
+- Accueil : calque de grain supprimé ; fond uni `#111013` et scène métallique conservés. Signature « De l’intelligence à l’impact » retirée du pied de page partagé.
+- TypeScript, quatre tests existants et build statique réussis (16 pages). `git diff --check` réussi. Pas de nouvelle dépendance.
+- Navigateur sur export statique : pages Transformation IA et Studio contrôlées à 1440 et 320 pixels ; Transformation IA également à 390 pixels. Aucun débordement horizontal observé. Accueil contrôlé à 1440 et 320 pixels, scène WebGL chargée.
+- FAQ budget : ouverture et adresse mailto vérifiées. Parcours accueil → Transformation IA → contact validé, avec « Transformer notre entreprise avec l’IA » présélectionné. Aucune erreur ou alerte dans la console du navigateur de contrôle.
+- La rédaction de « Pourquoi Hirakode » s’appuie sur les produits déjà documentés. Les usages internes précis de l’IA restent à compléter avec les indications des associés.
+- Snyk Code tenté : bloqué par l’absence d’authentification (« User not authenticated. Please run snyk_auth first »). Aucun résultat de sécurité favorable n’est présumé.
+- Validation réalisée localement, avant commit et push. Aucun déploiement effectué pendant cette validation.

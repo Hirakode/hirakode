@@ -9,7 +9,6 @@ const HeroScene = dynamic(() => import("./hero-scene"), { ssr: false });
 
 export function Hero() {
   return <section className="hero" aria-labelledby="hero-title">
-    <div className="hero-grain" aria-hidden="true"/>
     <div className="hero-intro"><span className="eyebrow"><span className="status-dot"/>Studio de solutions & transformation IA</span><p>Nous donnons forme à vos idées.<br/>Et de l’intelligence à vos outils.</p></div>
     <HeroScene/>
     <div className="hero-side-note" aria-hidden="true"><span>Humain × Data × Code</span><span>Une même ambition.</span></div>

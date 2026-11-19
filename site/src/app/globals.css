@@ -83,7 +83,6 @@
   .menu-content .motion-toggle { @apply mt-10 flex; }
   .menu-bottom { @apply flex justify-between border-t border-paper/25 pt-5 text-xs; }
   .hero { @apply relative isolate h-[100svh] min-h-[720px] overflow-hidden bg-night; }
-  .hero-grain { @apply pointer-events-none absolute inset-0 -z-10 opacity-30; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23F5F0EE' opacity='.1' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E"); }
   .hero-intro { @apply absolute left-[5.2vw] top-[21%] z-10; }
   .hero-intro .eyebrow { @apply flex items-center gap-3; }
   .hero-intro > p { @apply mt-6 text-[clamp(.8rem,1.15vw,1rem)] leading-[1.7] text-silver; }
@@ -314,45 +313,26 @@
   .transformation-path svg { @apply ml-auto h-4 w-4 shrink-0 text-gold; }
   .transformation-path > .transformation-path-note { @apply mb-0 mt-6 text-xs; }
   .transformation-intro { @apply pb-24; }
-  .transformation-opening { @apply mt-14 grid grid-cols-[1.3fr_.7fr] gap-[10vw]; }
-  .transformation-opening > div > p { @apply max-w-[640px] text-sm leading-[1.9] text-silver; }
-  .transformation-opening > div > p:first-child { @apply mb-6 text-xl leading-relaxed text-paper; }
+  .transformation-opening { @apply mt-14; }
+  .transformation-opening > p { @apply max-w-[760px] text-xl leading-relaxed text-paper; }
   .transformation-actions { @apply mt-9 flex flex-wrap items-center gap-7; }
-  .transformation-first-step { @apply border-l border-gold/50 pl-8; }
-  .transformation-first-step .eyebrow { @apply text-gold; }
-  .transformation-first-step h2 { @apply my-5 text-[clamp(2.5rem,3.5vw,4.2rem)] leading-[1.05]; }
-  .transformation-first-step p { @apply max-w-[260px] text-xs leading-[1.9] text-silver; }
   .transformation-use-cases { @apply bg-paper py-28 text-night; }
-  .transformation-use-cases .work-heading > p { @apply text-silver-ink; }
-  .transformation-use-case { @apply grid grid-cols-2 gap-[9vw] border-t border-night/20 py-9; }
-  .transformation-use-case h3 { @apply mb-4 font-display text-[clamp(2rem,3.1vw,3.5rem)] leading-tight; }
-  .transformation-use-case p { @apply max-w-[530px] text-sm leading-[1.9] text-silver-ink; }
-  .transformation-use-case .transformation-measure { @apply mt-5 text-xs text-night; }
-  .transformation-measure > span { @apply mb-1 block font-semibold; }
-  .transformation-context { @apply mt-7 max-w-[750px] text-xs leading-[1.9] text-silver-ink; }
+  .transformation-use-case { @apply grid grid-cols-2 items-center gap-[9vw] border-t border-night/20 py-9; }
+  .transformation-use-case h3 { @apply font-display text-[clamp(2rem,3.1vw,3.5rem)] leading-tight; }
+  .transformation-use-case p { @apply max-w-[530px] text-base leading-[1.9] text-silver-ink; }
   .transformation-steps { @apply m-0 list-none p-0; }
-  .transformation-deliverable { @apply mt-5 border-l border-gold/70 pl-4; }
-  .transformation-deliverable .eyebrow { @apply mb-2 text-gold; }
-  .transformation-deliverable p { @apply text-paper; }
-  .transformation-trust { @apply grid grid-cols-2 gap-[9vw] bg-paper py-28 text-night; }
-  .transformation-trust h2 { @apply my-8; }
-  .transformation-trust > div > p { @apply mb-8 max-w-[500px] text-sm leading-[1.9] text-silver-ink; }
-  .transformation-commitments article { @apply border-t border-night/20 py-7 first:pt-0 first:border-t-0; }
-  .transformation-commitments h3 { @apply mb-4 font-display text-3xl; }
-  .transformation-commitments p { @apply max-w-[520px] text-sm leading-[1.9] text-silver-ink; }
+  .transformation-method .process-intro .text-link { @apply mt-8; }
+  .transformation-method .process-step h4 { @apply mb-0 text-base font-normal leading-relaxed; }
   .transformation-foundations { @apply py-24; }
-  .transformation-projects { @apply grid grid-cols-2 gap-x-12 gap-y-10; }
-  .transformation-projects > a { @apply flex flex-col border-t border-paper/30 pt-6 transition-colors hover:border-gold; }
-  .transformation-projects h3 { @apply mb-4 text-xl tracking-tight; }
-  .transformation-projects p { @apply mb-8 text-sm leading-[1.9] text-silver; }
-  .transformation-projects a > span { @apply mt-auto flex items-center gap-5 text-xs text-gold; }
-  .transformation-projects svg { @apply h-4 w-4; }
-  .transformation-foundations .transformation-context { @apply mt-12 text-silver; }
+  .transformation-vision { @apply mb-14 grid grid-cols-2 gap-[9vw] text-base leading-[1.9] text-silver; }
+  .transformation-foundations .team-person > p { @apply text-sm text-silver; }
+  .transformation-foundations .team-person .team-description { @apply text-base; }
+  .transformation-faq .faq-list a { @apply underline underline-offset-4 hover:text-night; }
+  .transformation-faq .faq-list .transformation-faq-contact { @apply mt-8 border-t border-night/20 pt-8 pr-0 text-base text-night; }
   .transformation-invitation { @apply border-b border-paper/20 bg-burgundy py-24; }
   .transformation-invitation h2 { @apply my-8; }
   .transformation-invitation h2 em { @apply text-gold; }
   .transformation-invitation div > p { @apply mb-8 max-w-[590px] text-sm leading-[1.9] text-paper/85; }
-  .transformation-invitation-note { @apply mt-7 text-xs leading-[1.9] text-paper/85; }
   .faq-section { @apply grid grid-cols-2 gap-[9vw] bg-paper py-28 text-night; }
   .faq-section h2 { @apply mt-8; }
   .faq-list details { @apply border-t border-night/20 py-6; }
@@ -531,7 +511,6 @@
   .footer-signature { @apply gap-[3vw] pt-7; }
   .footer-signature > span { @apply text-[17vw]; }
   .footer-bottom { @apply mt-8 flex-wrap gap-y-4 text-[8px]; }
-  .footer-bottom > span:nth-child(2) { @apply hidden; }
   .footer-compact { @apply pt-10; }
   .page-intro { @apply pb-14 pt-36; }
   .page-intro h1 { @apply text-[13.5vw]; }
@@ -581,20 +560,14 @@
   .transformation-overview h2 { @apply mt-6 text-[11vw]; }
   .transformation-path { @apply border-l-0 pl-0; }
   .transformation-intro { @apply pb-16; }
-  .transformation-opening { @apply mt-8 grid-cols-1 gap-12; }
-  .transformation-opening > div > p:first-child { @apply text-lg; }
-  .transformation-opening > div > p { @apply text-sm; }
+  .transformation-opening { @apply mt-8; }
+  .transformation-opening > p { @apply text-lg; }
   .transformation-actions { @apply flex-col items-start gap-6; }
   .transformation-overview .primary-button, .transformation-actions .primary-button, .transformation-invitation .primary-button { @apply gap-4 px-5; }
-  .transformation-first-step { @apply pl-5; }
-  .transformation-first-step h2 { @apply text-4xl; }
-  .transformation-use-cases, .transformation-trust, .transformation-foundations, .transformation-invitation { @apply py-16; }
-  .transformation-use-case, .transformation-trust { @apply grid-cols-1 gap-6; }
+  .transformation-use-cases, .transformation-foundations, .transformation-invitation { @apply py-16; }
+  .transformation-use-case, .transformation-vision { @apply grid-cols-1 gap-6; }
   .transformation-use-case h3 { @apply text-3xl; }
-  .transformation-method .process-step p { @apply text-sm; }
   .transformation-method .process-step h4 { @apply leading-relaxed; }
-  .transformation-trust { @apply gap-12; }
-  .transformation-projects { @apply grid-cols-1 gap-10; }
   .transformation-faq .faq-list summary, .transformation-faq .faq-list p { @apply text-sm; }
   .faq-section { @apply grid-cols-1 gap-10 py-16; }
   .faq-list summary { @apply text-xs; }

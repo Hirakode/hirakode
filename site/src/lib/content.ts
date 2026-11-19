@@ -169,67 +169,36 @@ export const services = [
 ] as const;
 
 export const transformationSteps = [
-  {
-    title: "Cadrer",
-    subtitle: "Choisir le bon point de départ.",
-    text: "Nous examinons avec vos équipes les tâches, les outils et les données disponibles. Les usages sont priorisés selon leur utilité, leur faisabilité et leurs contraintes.",
-    deliverable: "Une cartographie des opportunités et un premier cas d’usage cadré : périmètre, budget et critères de réussite.",
-  },
-  {
-    title: "Tester",
-    subtitle: "Mettre l’idée à l’épreuve du travail réel.",
-    text: "Un pilote sur un périmètre limité permet de comparer la situation avant et après : temps passé, qualité des réponses, corrections nécessaires et retour des utilisateurs.",
-    deliverable: "Un prototype testable et un bilan pour décider ensemble de poursuivre, d’ajuster ou de s’arrêter.",
-  },
-  {
-    title: "Intégrer",
-    subtitle: "Faire une place à l’IA dans vos outils.",
-    text: "Si le pilote est concluant, nous préparons l’intégration dans votre environnement : accès, circulation des données, validation humaine et suivi des coûts d’utilisation.",
-    deliverable: "Une solution intégrée au périmètre convenu, des règles d’usage et un déploiement progressif.",
-  },
-  {
-    title: "Transmettre",
-    subtitle: "Donner la main à vos équipes.",
-    text: "Des ateliers sur vos propres usages, une documentation accessible et des points de suivi aident chacun à prendre en main l’outil, à en connaître les limites et à faire remonter les difficultés.",
-    deliverable: "Des supports de prise en main et des indicateurs pour suivre l’adoption et les effets dans la durée.",
-  },
+  { title: "Cadrer", subtitle: "Identifier vos processus à optimiser." },
+  { title: "Élaborer", subtitle: "Designer des solutions concrètes et efficaces." },
+  { title: "Tester", subtitle: "Ajuster les nouveaux processus aux usages réels de vos équipes." },
+  { title: "Intégrer", subtitle: "Déployer les agents à l’échelle de votre entreprise." },
+  { title: "Transmettre", subtitle: "Accompagner vos équipes dans la maîtrise des nouveaux outils." },
 ] as const;
 
 export const transformationUseCases = [
   {
-    title: "Retrouver le savoir interne.",
-    situation: "L’information se disperse entre documents, procédures et outils.",
-    approach: "Un assistant qui recherche dans un corpus autorisé et renvoie aux documents sources pour permettre de vérifier ses réponses.",
-    measure: "Temps de recherche, pertinence des sources et réponses à corriger.",
+    title: "Libérer du temps pour l’essentiel",
+    description: "Alléger les tâches répétitives pour consacrer plus de temps à ce qui fait la valeur de votre métier.",
   },
   {
-    title: "Alléger le travail administratif.",
-    situation: "Les mêmes informations sont lues, recopiées et classées chaque jour.",
-    approach: "Une aide à l’extraction et au classement des documents, avec une validation des informations avant leur utilisation.",
-    measure: "Temps de traitement, erreurs d’extraction et reprises manuelles.",
+    title: "Mieux mobiliser vos connaissances",
+    description: "Rendre vos informations et vos savoir-faire plus accessibles pour aider chacun à les utiliser au bon moment.",
   },
   {
-    title: "Préparer des réponses plus utiles.",
-    situation: "Les équipes passent du temps à reconstituer le contexte de chaque demande.",
-    approach: "Une synthèse des échanges et un brouillon de réponse à partir des informations disponibles, relu par la personne qui l’envoie.",
-    measure: "Temps de préparation, qualité des brouillons et corrections nécessaires.",
+    title: "Faire évoluer vos façons de travailler",
+    description: "Repenser vos processus avec vos équipes pour faciliter la collaboration et améliorer la qualité du travail.",
   },
   {
-    title: "Faire parler vos données.",
-    situation: "Les informations existent, mais les rapprocher demande beaucoup d’efforts.",
-    approach: "Un outil qui rassemble les données utiles et aide à les explorer, avec des sources identifiées et des résultats que l’on peut vérifier.",
-    measure: "Temps d’analyse, fiabilité des données et utilité pour les équipes.",
+    title: "Créer de nouvelles possibilités",
+    description: "Explorer de nouveaux services, outils ou expériences, puis tester ce qu’ils peuvent apporter à votre activité.",
   },
 ] as const;
 
 export const transformationQuestions = [
   {
-    question: "Nous ne savons pas par où commencer. Est-ce trop tôt ?",
+    question: "Par où pouvons-nous commencer ?",
     answer: "C’est précisément le rôle du cadrage. Vous pouvez venir avec une tâche qui prend trop de temps, une difficulté récurrente ou une question ouverte. Nous cherchons avec vous un premier usage dont l’intérêt peut être vérifié.",
-  },
-  {
-    question: "Avez-vous déjà accompagné une transformation IA d’entreprise ?",
-    answer: "La transformation IA est une nouvelle offre chez Hirakode : nous n’avons pas encore de mission de ce type à présenter. Notre socle est la conception et le développement de produits, la data et l’intégration d’outils, visibles dans nos projets. Nous vous proposons de commencer par un périmètre limité, avec des livrables et des critères de réussite convenus avant d’aller plus loin.",
   },
   {
     question: "Comment abordez-vous les données confidentielles ?",
@@ -237,11 +206,12 @@ export const transformationQuestions = [
   },
   {
     question: "Faut-il changer tous nos outils ou former tout le monde ?",
-    answer: "Nous partons de votre environnement et des personnes concernées par le premier usage. Le pilote permet d’évaluer ce qui peut s’intégrer à l’existant et l’accompagnement nécessaire. Les ateliers portent sur les tâches réelles, les vérifications à effectuer et les limites de l’outil.",
+    answer: "Nous partons de votre environnement et des personnes concernées par le premier usage. Le pilote permet d’évaluer ce qui peut s’intégrer à l’existant et l’accompagnement nécessaire.",
   },
   {
     question: "Quel budget, quel délai et quel engagement prévoir ?",
-    answer: "Ils dépendent du périmètre, de l’accès aux données et des intégrations nécessaires. Après un premier échange, nous proposons une étape de cadrage avec ses livrables, son budget et son calendrier. Chaque étape suivante se décide avec vous. Si le pilote ne démontre pas assez d’utilité, nous le documentons et discutons d’un ajustement ou d’un arrêt.",
+    answer: "Chaque entreprise est unique, nous sommes là pour nous adapter au mieux à vos besoins et à vos ressources.",
+    contactSuffix: "pour mettre au point ensemble une offre personnalisée.",
   },
 ] as const;
 
@@ -253,7 +223,7 @@ export const steps = [
 ] as const;
 
 export const team = [
-  { name: "Anatole", role: "Produit & accompagnement", description: "Relier les besoins métier, l’expérience utilisateur et la mise en œuvre du projet.", symbol: "01" },
-  { name: "Gaël", role: "Data & machine learning", description: "Explorer les données, concevoir les modèles et donner du sens aux résultats.", symbol: "02" },
-  { name: "Florian", role: "Ingénierie & développement", description: "Construire les applications, relier les systèmes et les faire fonctionner ensemble.", symbol: "03" },
+  { name: "Anatole", role: "Produit & accompagnement", description: "Relier les besoins métier, l’expérience utilisateur et la mise en œuvre du projet.", transformationDescription: "Identifier les usages utiles avec vos équipes et accompagner leur adoption dans votre quotidien.", symbol: "01" },
+  { name: "Gaël", role: "Algorithmique & data science", description: "Explorer les données, concevoir les modèles et optimiser les algorithmes.", transformationDescription: "Évaluer vos données, choisir les modèles adaptés et optimiser les algorithmes selon vos objectifs.", symbol: "02" },
+  { name: "Florian", role: "Ingénierie & développement", description: "Construire les applications, designer les processus agentiques et les adapter aux besoins clients.", transformationDescription: "Concevoir les agents et les applications, puis les intégrer à vos outils et à vos processus de travail.", symbol: "03" },
 ] as const;

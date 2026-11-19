@@ -43,7 +43,7 @@ Le formulaire prépare un e-mail vers **contact@hirakode.com** et permet de copi
 
 La scène Three.js est chargée séparément. Son animation s’arrête hors écran, dans un onglet masqué, à la demande via le bouton pause ou quand le système demande de réduire les animations. Un symbole SVG reste visible si WebGL est indisponible. Le menu utilise un dialogue natif pour le focus et la fermeture au clavier.
 
-La transformation IA dispose d’une section d’accueil avant les projets et d’une page `/transformation-ia/`, accessible depuis le menu, les expertises et le pied de page. Les appels au contact présélectionnent le besoin correspondant. Cette nouvelle offre présente une démarche proposée, des usages possibles et le savoir-faire technique du studio ; aucun cas client de transformation, témoignage ou résultat chiffré n’est inventé. La FAQ précise que cette activité démarre.
+La transformation IA dispose d’une section d’accueil avant les projets et d’une page `/transformation-ia/`, accessible depuis le menu, les expertises et le pied de page. Les appels au contact présélectionnent le besoin correspondant. L’offre présente quatre objectifs transversaux, une démarche en cinq étapes et les trois associés avec leurs contributions à la transformation IA. La FAQ répond aux questions de cadrage, de confidentialité, d’intégration et de budget, avec un contact direct par e-mail.
 
 ## Avant une publication
 
